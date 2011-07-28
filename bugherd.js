@@ -11,7 +11,7 @@ chrome.extension.sendRequest({method: "getLocalStorage"}, function(response) {
         document.body.appendChild(d);
 
         var s = document.createElement("script");
-        s.setAttribute("src","http://hack.com:3000/bugherd_development.js");
+        s.setAttribute("src","http://www.bugherd.com/bugherd_development.js");
         s.setAttribute("type","text/javascript");
         document.body.appendChild(s);
     }
