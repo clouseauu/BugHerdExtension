@@ -1,0 +1,16 @@
+{
+  "name": "BugHerd Extension",
+   "options_page": "settings.html",
+   "background_page": "background.html",
+   "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["bugherd.js"]
+    }
+  ],
+  "version": "0.1",
+  "description": "Pre-release chrome extension for BugHerd",
+  "permissions": [
+    "tabs", "http://*/*"
+  ]
+}
