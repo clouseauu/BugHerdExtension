@@ -1,57 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<head><title>My Test Extension Options</title></head>
-<script type="text/javascript">
+	<head>
+		<title>
+			BugHerd Options
+		</title>
+		<link href="http://www.bugherd.com/content/new.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
 
-// Saves options to localStorage.
-function save_options() {
-  var urlInput = document.getElementById("url");
-  var url = urlInput.value;
-  localStorage["bh_destination_url"] = url;
+		// Saves options to localStorage.
+		function save_options() {
+		var urlInput = document.getElementById("url");
+		var url = urlInput.value;
+		localStorage["bh_destination_url"] = url;
 
-    var apiInput = document.getElementById("api_key");
-  var api_key = apiInput.value;
-  localStorage["bh_api_key"] = api_key;
+		var apiInput = document.getElementById("api_key");
+		var api_key = apiInput.value;
+		localStorage["bh_api_key"] = api_key;
 
-  // Update status to let user know options were saved.
-  var status = document.getElementById("status");
-  status.innerHTML = "Options Saved.";
-  setTimeout(function() {
-    status.innerHTML = "";
-  }, 750);
-}
+		// Update status to let user know options were saved.
+		var status = document.getElementById("status");
+		status.innerHTML = "Options Saved.";
+		setTimeout(function() {
+		status.innerHTML = "";
+		}, 750);
+		}
 
-// Restores select box state to saved value from localStorage.
-function restore_options() {
-  var url = localStorage["bh_destination_url"];
-  if (!url) {
-    return;
-  }
-  var urlInput = document.getElementById("url");
-  urlInput.value = url;
+		// Restores select box state to saved value from localStorage.
+		function restore_options() {
+		var url = localStorage["bh_destination_url"];
+		if (!url) {
+		return;
+		}
+		var urlInput = document.getElementById("url");
+		urlInput.value = url;
 
-      var api_key = localStorage["bh_api_key"];
-  if (!api_key) {
-    return;
-  }
-  var apiInput = document.getElementById("api_key");
-  apiInput.value = api_key;
-}
+		var api_key = localStorage["bh_api_key"];
+		if (!api_key) {
+		return;
+		}
+		var apiInput = document.getElementById("api_key");
+		apiInput.value = api_key;
+		}
 
-</script>
-
-<body onload="restore_options()">
-
-Domain name where site should appear:<br/>
-<input type="text" id="url" placeholder="http://example.com" style="width:300px">
-
-<br/>
-
-
-API Key:<br/>
-<input type="text" id="api_key" placeholder="really-big-long-number-with-dashes" style="width:300px">
-
-<br/>
-<button onclick="save_options()">Save</button>
-<div id="status"></div>
-</body>
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<div class="wrap">
+				<strong id="logo"><a href="/">BugHerd</a></strong>
+				<ul id="siteNav">
+					<li class="navItem">
+						<a href="http://www.bugherd.com/#pricing" class="navLink"><span>Register</span></a>
+					</li>
+					<li class="navItem">
+						<a href="http://www.bugherd.com/users/sign_in" class="navLink"><span>Sign In</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div class="wrap"><h2>BugHerd Settings</h2>
+				<p>
+					Please provide the domain you'd like BugHerd to appear on. You will need to provide the matching API key. 
+				</p>
+				<p>
+					To find your API key, <a href="http://www.bugherd.com/projects" target="_blank">Go here</a>, select your project, then click "get widget".
+				</p>
+					<div id="signup">
+						<fieldset>
+							<div class="fieldRow">
+								<label>Domain name where site should appear:</label><br/>
+						
+								 <input class="textField" type="text" id="url" placeholder="http://example.com">
+							</div>
+							<div class="fieldRow">
+								<label>API Key:</label><br/> <input class="textField" type="text" id="api_key" placeholder="really-big-long-number-with-dashes" style="width:300px">
+							</div>
+							<p>
+								<button onclick="save_options()">Save</button>
+							</p>
+							<p>
+								<div id="status"></div>
+							</p>
+						</fieldset>		
+					</div>
+					<p>NOTE: For security purposes you will need to be logged into BugHerd in this browser for the widget appear.
+						</p>
+			</div>
+		</div>
+	</body>
 </html>

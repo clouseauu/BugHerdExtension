@@ -2,15 +2,16 @@
   "name": "BugHerd Extension",
    "options_page": "settings.html",
    "background_page": "background.html",
+	"icons": {"16": "bugherd_16.png", "48": "bugherd_48.png", "128": "bugherd_128.png" },
    "content_scripts": [
     {
-      "matches": ["http://*/*"],
+      "matches": ["<all_urls>"],
       "js": ["bugherd.js"]
     }
   ],
   "version": "0.1",
   "description": "Pre-release chrome extension for BugHerd",
   "permissions": [
-    "tabs", "http://*/*"
+     "<all_urls>"
   ]
 }
