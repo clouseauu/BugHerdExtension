@@ -1,5 +1,9 @@
 {
   "name": "BugHerd Extension",
+	"browser_action": {
+    "default_icon": "bugherd_16.png",
+	    "popup": "popup.html"
+  },
    "options_page": "settings.html",
    "background_page": "background.html",
 	"icons": {"16": "bugherd_16.png", "48": "bugherd_48.png", "128": "bugherd_128.png" },
@@ -9,8 +13,8 @@
       "js": ["bugherd.js"]
     }
   ],
-  "version": "0.1",
-  "description": "Pre-release chrome extension for BugHerd",
+  "version": "0.2",
+  "description": "Pre-release chrome extension for BugHerd.",
   "permissions": [
      "<all_urls>"
   ]

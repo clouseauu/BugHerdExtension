@@ -3,12 +3,28 @@
 <html>
 <head>
     <title></title>
+	
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
     <Script>
     chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 
-      sendResponse({data: localStorage});
+			sendResponse({data: localStorage});
 
-});</Script>
+});
+
+var url = "http://www.bugherd.com/project_list.json";
+$.ajax({url:url, 
+	dataType:"text",
+	success:function(data){	
+		data=data.replace(/http:\/\//gi,"").replace(/https:\/\//gi,"").replace(/file:\/\//gi,"");
+		localStorage["bh_projects"]= data;
+		chrome.browserAction.setIcon({path:"bugherd_16.png"});
+	},
+	error:function(data){
+		chrome.browserAction.setIcon({path:"bugherd_error_16.png"});
+	}
+})
+</Script>
 </head>
 <body>
 

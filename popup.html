@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>
+			BugHerd Projects
+		</title>
+			<link href="http://www.bugherd.com/content/new.css" rel="stylesheet" type="text/css">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js" type="text/javascript">
+</script>
+		<script type="text/javascript">
+$(document).ready(function () {
+			$("#checking").show();
+				var url = "http://www.bugherd.com/project_list.json";
+			$.ajax({url:url, 
+				dataType:"text",
+				success:function(data){
+						tempdata=data.replace(/http:\/\//gi,"").replace(/https:\/\//gi,"").replace(/file:\/\//gi,"");
+						localStorage["bh_projects"]= tempdata;
+						data = $.parseJSON(data);
+						chrome.browserAction.setIcon({path:"bugherd_16.png"});
+						for(var i=0;i<data.length;i++)
+						{
+							$("#loaded ul").append($("<li><a href='" + data[i]["url"] + "' target='_blank'>"+ data[i]["name"]+"</a></li>"));                          
+						}
+							$("#checking").hide();
+						$("#login_message").hide();
+								$("#loaded").show();
+				},
+				error:function(data){
+					chrome.browserAction.setIcon({path:"bugherd_error_16.png"});
+						$("#checking").hide();
+					$("#login_message").show(); 
+						$("#loaded").hide();
+				}
+			})
+			
+			
+		});
+		</script>
+		<style>
+		html{
+			overflow:visible;
+		}
+		body{
+			min-width:300px;
+			background:none;
+			font-size:12px;	
+			margin:8px;		
+		}
+		h3{
+			background:#333;
+			padding:5px;
+		}
+		li{
+			list-style-type:none;
+		}
+		.popup_wrapper{			
+			margin:12px;
+		}
+		</style>
+	</head>
+	<body>
+		<h3>Your BugHerd Projects</h3>
+		<div class="popup_wrapper">
+		<div id="checking">
+			checking...
+		</div>
+		<div id="login_message" style="display:none;">
+			<p>
+				You will need to log in to BugHerd.com to use this extension. <a href="http://www.bugherd.com/users/sign_in" target="_blank">sign in now</a>
+			</p>
+		</div>
+		<div id="loaded" style="display:none;">
+			<p>
+			Select a project and start logging bugs:
+				<ul></ul>
+				or <a href="http://www.bugherd.com/start" target="_blank">Create a new project</a>
+			</p>
+		</div>
+		</div>
+	</body>
+</html>
