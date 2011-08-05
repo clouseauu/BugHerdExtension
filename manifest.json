@@ -4,7 +4,6 @@
     "default_icon": "bugherd_16.png",
 	    "popup": "popup.html"
   },
-   "options_page": "settings.html",
    "background_page": "background.html",
 	"icons": {"16": "bugherd_16.png", "48": "bugherd_48.png", "128": "bugherd_128.png" },
    "content_scripts": [
