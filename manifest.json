@@ -12,7 +12,7 @@
       "js": ["bugherd.js"]
     }
   ],
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Pre-release chrome extension for BugHerd.",
   "permissions": [
      "<all_urls>"
